@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import *
 from tkinter import messagebox
 
-import lr1, lr2, lr3, lr4, lr61, lr62
+import elementary_functions, differential_equations, multiple_integrals, nonlinear_equations, numerical_integration
 
 
 def btnClickCalc1():
