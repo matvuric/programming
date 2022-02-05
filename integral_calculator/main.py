@@ -7,31 +7,31 @@ import elementary_functions, differential_equations, multiple_integrals, nonline
 
 def btnClickCalc1():
     if cbVariableLev.get() and cbVariablePost.get():
-        show_message(lr1.permanent_integral(1, float(tInput1.get())))
+        show_message(numerical_integration.permanent_integral(1, float(tInput1.get())))
     if cbVariablePrav.get() and cbVariablePost.get():
-        show_message(lr1.permanent_integral(2, float(tInput1.get())))
+        show_message(numerical_integration.permanent_integral(2, float(tInput1.get())))
     if cbVariableTrap.get() and cbVariablePost.get():
-        show_message(lr1.permanent_integral(3, float(tInput1.get())))
+        show_message(numerical_integration.permanent_integral(3, float(tInput1.get())))
     if cbVariablePar.get() and cbVariablePost.get():
-        show_message(lr1.permanent_integral(4, float(tInput1.get())))
+        show_message(numerical_integration.permanent_integral(4, float(tInput1.get())))
     if cbVariablePer.get():
-        show_message(lr1.variable_integral(float(tInput1.get())))
+        show_message(numerical_integration.variable_integral(float(tInput1.get())))
 
 
 def btnClickCalc2():
-    show_message(lr2.multiple_integral(float(tInput2.get()), float(tInput3.get())))
+    show_message(multiple_integrals.multiple_integral(float(tInput2.get()), float(tInput3.get())))
 
 
 def btnClickCalc3():
-    show_message(lr3.sum(float(tInput4.get())))
+    show_message(elementary_functions.sum(float(tInput4.get())))
 
 
 def btnClickCalc4():
-    show_message(lr4.sum(float(tInput5.get())))
+    show_message(nonlinear_equations.sum(float(tInput5.get())))
 
 
 def btnClickCalc5():
-    show_message(lr61.sum())
+    show_message(differential_equations.sum())
 
 
 def show_message(txt):
