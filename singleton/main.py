@@ -1,27 +1,22 @@
 import requests
-import xml.etree.ElementTree as elTree
+from xml.etree import ElementTree as elTree
 
 
-def singleton(cls):
-    instances = {}
+class Singleton(object):
+    _instance = None
 
-    def get_instance():
-        if cls not in instances:
-            instances[cls] = cls()
-        return instances[cls]
-    return get_instance
+    def __new__(cls, *args, **kwargs):
+        if not cls._instance:
+            cls._instance = object.__new__(cls, *args, **kwargs)
+        return cls._instance
 
 
-@singleton
-class CurrenciesList:
-    def __init__(self):
-        print('__init__ called')
-
+class CurrenciesList(Singleton):
     def get_currencies(self, currencies_ids_lst=None):
         if currencies_ids_lst is None:
             currencies_ids_lst = ['R01239', 'R01235', 'R01035', 'R01815', 'R01585F', 'R01589', 'R01625', 'R01670',
                                   'R01700J', 'R01710A']
-        cur_res_str = requests.get('https://www.cbr.ru/scripts/XML_daily.asp')
+        cur_res_str = requests.get("https://www.cbr.ru/scripts/XML_daily.asp")
         result = {}
         cur_res_xml = elTree.fromstring(cur_res_str.content)
         valutes = cur_res_xml.findall("Valute")
@@ -35,9 +30,4 @@ class CurrenciesList:
         return result
 
 
-my_cur_list = CurrenciesList()
-
-print(id(my_cur_list))
-my_cur_list2 = CurrenciesList()
-res = my_cur_list2.get_currencies(["R01090B", "R01720", "R01565"])
-print(res)
+print(CurrenciesList().get_currencies())
