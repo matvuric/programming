@@ -12,7 +12,8 @@ class Singleton(object):
 
 
 class CurrenciesList(Singleton):
-    def get_currencies(self, currencies_ids_lst=None):
+    @staticmethod
+    def get_currencies(currencies_ids_lst=None):
         if currencies_ids_lst is None:
             currencies_ids_lst = ['R01239', 'R01235', 'R01035', 'R01815', 'R01585F', 'R01589', 'R01625', 'R01670',
                                   'R01700J', 'R01710A']
