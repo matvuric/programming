@@ -3,12 +3,12 @@ from xml.etree import ElementTree as elTree
 
 
 class Singleton(object):
-    _instance = None
+    __instance = None
 
     def __new__(cls, *args, **kwargs):
-        if not cls._instance:
-            cls._instance = object.__new__(cls, *args, **kwargs)
-        return cls._instance
+        if not cls.__instance:
+            cls.__instance = object.__new__(cls)
+        return cls.__instance
 
 
 class CurrenciesList(Singleton):
@@ -19,14 +19,13 @@ class CurrenciesList(Singleton):
         cur_res_str = requests.get("https://www.cbr.ru/scripts/XML_daily.asp")
         result = {}
         cur_res_xml = elTree.fromstring(cur_res_str.content)
-        valutes = cur_res_xml.findall("Valute")
-
-        for _v in valutes:
-            valute_id = _v.get('ID')
-            if str(valute_id) in currencies_ids_lst:
-                valute_cur_val = _v.find('Value').text
-                valute_cur_name = _v.find('Name').text
-                result[valute_id] = (valute_cur_val, valute_cur_name)
+        val = cur_res_xml.findall("Valute")
+        for i in val:
+            val_id = i.get('ID')
+            if str(val_id) in currencies_ids_lst:
+                val_cur_val = i.find('Value').text
+                val_cur_name = i.find('Name').text
+                result[val_id] = (val_cur_val, val_cur_name)
         return result
 
 
