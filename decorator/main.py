@@ -2,7 +2,7 @@ from time import time
 import json
 import requests
 from datetime import datetime
-from xml.etree import ElementTree as elTree
+from bs4 import BeautifulSoup
 
 
 class BaseCurrenciesList:
@@ -20,7 +20,6 @@ class CurrenciesList(BaseCurrenciesList):
     def get_currencies(self, currencies_ids_lst: list = None) -> dict:
         t = time()
         dt = datetime.today().day
-
         result = {}
 
         if self.rates_available:
@@ -32,25 +31,18 @@ class CurrenciesList(BaseCurrenciesList):
                     'R01239', 'R01235', 'R01035', 'R01815', 'R01585F', 'R01589',
                     'R01625', 'R01670', 'R01700J', 'R01710A'
                 ]
-            res = requests.get("https://www.cbr.ru/scripts/XML_daily.asp")
-            cur_res_str = res.text
-
-            root = elTree.fromstring(cur_res_str)
-
-            valutes = root.findall("Valute")
-
-            for _v in valutes:
-                valute_id = _v.get('ID')
-
+            cur_res_str = requests.get('https://www.cbr.ru/scripts/XML_daily.asp').text
+            result = {}
+            cur_res_xml = BeautifulSoup(cur_res_str, 'html.parser')
+            val = cur_res_xml.find_all("valute")
+            for _v in val:
+                valute_id = _v['id']
                 if str(valute_id) in currencies_ids_lst:
-                    valute_cur_val = _v.find('Value').text
-                    valute_cur_name = _v.find('Name').text
-
-                    result[valute_id] = (valute_cur_val, valute_cur_name)
-
+                    val_cur_val = _v.find('value').string
+                    val_cur_name = _v.find('name').string
+                    result[valute_id] = (val_cur_val, val_cur_name)
             self.rates = result
             self.rates_available = True
-
         return result
 
 
@@ -61,7 +53,7 @@ class Decorator(BaseCurrenciesList):
         self.__wrapped_object = currencies_lst
 
     @property
-    def wrapped_object(self) -> str:
+    def wrapped_object(self) -> BaseCurrenciesList:
         return self.__wrapped_object
 
     def get_currencies(self, currencies_ids_lst: list = None) -> dict:
