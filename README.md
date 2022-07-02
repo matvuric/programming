@@ -37,6 +37,10 @@ get_weather_data(55.7522, 37.6156, 'd204de47e2ed49257fc3f7cc51a8dda7', 165628800
 ![](https://sun9-north.userapi.com/sun9-77/s/v1/if2/xAwOvnAJY2y93FEZwMAUy8bkVCvSfjbEl0yFCPQ2WFhIfKkPSbWkFUPoEckUj1iHMNX7hhU8JkOmTHKCCPLigEL-.jpg?size=1500x500&quality=96&type=album)
 ***
 ### [Лабораторная работа №6](https://replit.com/@MatviivKirill/prog5lab3#myremotemodule.py)
+```
+print(CurrenciesList().get_currencies(["R01090B", "R01720", "R01565"]))
+>>> {'R01090B': ('20,9514', 'Белорусский рубль'), 'R01565': ('11,8839', 'Польский злотый'), 'R01720': ('18,2867', 'Украинских гривен')}
+```
 ***
 ### [Лабораторная работа №7](https://replit.com/@MatviivKirill/prog5lab3#myremotemodule.py)
 ***
