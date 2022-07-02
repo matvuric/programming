@@ -15,3 +15,18 @@ squareSequenceDigit(14)
 get_weather_data('Kiev', api_key='3943c34639f5bbda81824a4db5b51a27')
 >>> {"name": "Kyiv", "coord": {"lon": 30.5167, "lat": 50.4333}, "country": "UA", "feels like": 18.28, "timezone": "UTC+3"}
 ```
+### [Лабораторная работа №3](https://replit.com/@MatviivKirill/prog5lab3#myremotemodule.py)
+### [Лабораторная работа №4](https://github.com/python-basic/sem3-lr4-matvuric)
+```
+fib(10)
+>>> [0, 1, 1, 2, 3, 5, 8]
+fib(1)
+>>> [0, 1, 1]
+fib(45)
+>>> [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+```
+### [Лабораторная работа №5](https://replit.com/@MatviivKirill/prog5lab3#myremotemodule.py)
+### [Лабораторная работа №6](https://replit.com/@MatviivKirill/prog5lab3#myremotemodule.py)
+### [Лабораторная работа №7](https://replit.com/@MatviivKirill/prog5lab3#myremotemodule.py)
+### [Лабораторная работа №8](https://replit.com/@MatviivKirill/prog5lab3#myremotemodule.py)
+### [Лабораторная работа №9](https://replit.com/@MatviivKirill/prog5lab3#myremotemodule.py)
