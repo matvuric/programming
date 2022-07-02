@@ -57,5 +57,10 @@ show_currencies(wrapped_cur_list)
     }
 ```
 ***
-### [Лабораторная работа №9](https://replit.com/@MatviivKirill/prog5lab3#myremotemodule.py)
+### [Лабораторная работа №9](https://colab.research.google.com/drive/1BbstCcPGewLtIWguivoYQzRfA6yLmOCv?usp=sharing)
+```
+viz_currencies()
+viz_dollar()
+```
+![](https://sun9-east.userapi.com/sun9-29/s/v1/if2/or8WfTwQsbOL91UWXEbE2vPtyRjMcOqFS1RDfxHMN4oi-ZF03WGADcUfR6Wv2ZJ8n8munwhnwAxNw-XAR21a02CU.jpg?size=1200x800&quality=96&type=album)
 ***
