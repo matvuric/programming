@@ -40,8 +40,6 @@ def visualise_data(json_data, days_range):
     pplt.show()
 
     avg_temps = [0] * len(all_temps[0])
-    print(all_temps)
-    print(avg_temps)
     for i in all_temps:
         for j in range(len(i)):
             avg_temps[j] += i[j]
