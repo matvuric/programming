@@ -4,11 +4,11 @@
 ### [Лабораторная работа №1](https://github.com/python-basic/sem5-lr1-matvuric)
 ```
 squareSequenceDigit(45)
+>>> n = 45, result = 1
 squareSequenceDigit(12)
+>>> n = 12, result = 6
 squareSequenceDigit(14)
-n = 45, result = 1
-n = 12, result = 6
-n = 14, result = 8
+>>> n = 14, result = 8
 ```
 ### [Лабораторная работа №2](https://github.com/python-basic/sem5-lr2-matvuric)
 ```
