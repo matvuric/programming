@@ -64,3 +64,42 @@ viz_dollar()
 ```
 ![](https://sun9-east.userapi.com/sun9-29/s/v1/if2/or8WfTwQsbOL91UWXEbE2vPtyRjMcOqFS1RDfxHMN4oi-ZF03WGADcUfR6Wv2ZJ8n8munwhnwAxNw-XAR21a02CU.jpg?size=1200x800&quality=96&type=album)
 ***
+
+## Семестр 6
+### [Лабораторная работа №1-2](https://replit.com/@MatviivKirill/prog6lab1#main.py)
+```
+print("Среднее: ", data2.get_mean)
+>>> Среднее:  (2843.5616438356165, 1905.8807397260264)
+print("Максимум: ", data2.max)
+>>> Максимум:  (5000.0, 4556.93)    
+print("Минимум: ", data2.min)
+>>> Минимум:  (500.0, 320.25) 
+print("Дисперсия: ", data2.disp)
+>>> Дисперсия:  (904376.3557890786, 1531702.423118352)
+print("Среднее квадратичное отклонение: ", data2.sigma_sq)
+>>> Среднее квадратичное отклонение:  (950.9870429133505, 1237.6196601211343)
+```
+***
+### [Лабораторная работа №3-4](https://replit.com/@MatviivKirill/prog6lab2#main.py)
+```
+get_sex_distrib(data)
+>>> (577, 314)
+...
+find_popular_adult_names(data)
+>>> ('William', 'Anna')
+```
+***
+### [Лабораторная работа №5](https://replit.com/@MatviivKirill/prog6lab5#main.py)
+```
+clrs = {1: 'k', 2: 'b', 3: 'g', 5: 'm', 10: 'c', 20: 'r'}
+for i in clrs:
+  pol(i, clrs.get(i))
+>>> MSE1 4.3182e+05
+    MSE1 (для данных ДО 3.5 недели)= 1.8845e+05
+    MSE1 (для данных c 3.5 недели по 4.1 недели)= 1.2355e+05
+    MSE1 (только для данных с 4.1 недели)= 2.4832e+05
+    ...
+```
+![](https://sun9-west.userapi.com/sun9-51/s/v1/if2/MciTbrw3ywJWWQXqc9Ecp4lqVujEKuvUW1Mi-HoltzpuCIa_qq-Gnyc27Q_4sGUdWl3RxbATWgN5ue2CZD-J7oTb.jpg?size=640x480&quality=96&type=album)
+***
+### [Лабораторная работа №6](https://colab.research.google.com/drive/1xQOf-rtTKB2dqY278Ubwzh1zj6nJM1EA)
