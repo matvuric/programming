@@ -1,7 +1,7 @@
 # Программирование
 ## Семестр 5
 
-### [Лабораторная работа №1](https://github.com/python-basic/sem5-lr1-matvuric)
+### [Лабораторная работа №1. Найти n-ю цифру последовательности из квадратов целых чисел.](https://github.com/python-basic/sem5-lr1-matvuric)
 ```
 squareSequenceDigit(45)
 >>> n = 45, result = 1
