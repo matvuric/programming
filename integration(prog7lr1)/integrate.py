@@ -1,4 +1,4 @@
-def integrate(f, a, b, *, n_iter=1000):
+def integrate(f, a, b, *, n_iter=10**6):
     h = (b - a) / n_iter
     x = a + h
     int_sum = 0
