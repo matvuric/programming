@@ -1,8 +1,7 @@
 import re
-import bs4
 import requests
 from bs4 import BeautifulSoup
-import string
+from collections import Counter
 from natasha import (
     Segmenter,
     MorphVocab,
@@ -20,7 +19,8 @@ from natasha import (
 
     Doc
 )
-import wordcloud
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
 
 
 segmenter = Segmenter()
@@ -39,48 +39,69 @@ addr_extractor = AddrExtractor(morph_vocab)
 
 def main_html(url):
     bs = BeautifulSoup(requests.get(url).text, 'html.parser')
-    news_list = bs.find('td', {'class': 'blockwh'}).find_all(href=re.compile('^/news/07-10-2022_4/'))
+    news_list = bs.find('td', {'class': 'blockwh'}).find_all(href=re.compile('^/news/'))[:5]
     for i in news_list:
-        new_html(dom + i['href'])
+        news_html(dom + i['href'])
 
 
-def new_html(url):
+def news_html(url):
     bs = BeautifulSoup(requests.get(url).text, 'html.parser')
-    text_list = bs.find('td', {'class': 'blockwh'}).find_all('p')
+    try:
+        text_list = bs.find('td', {'class': 'blockwh'}).find_all('p')
+    except Exception as e:
+        text_list = []
+        print(url)
+        print(e)
     text = ''
     for i in text_list:
-        content = i.contents
-        if len(content) > 1:
-            for j in content:
-                if type(j) is bs4.element.Tag:
-                    text += j.string.lower()
-                else:
-                    text += j.lower()
-        else:
-            p = i.string
-            if p is not None:
-                text += p.lower()
-    text_processing(text)
+        try:
+            text += i.text
+        except Exception as e:
+            print(url)
+            print(e)
+    print(url + '\n')
+    text_processing(text.strip(), url.split('/')[4])
 
 
-def text_processing(text):
-    text = 'пваыпвыап ывапывапывап ывапывапыва ывапывапывап выапывапывап ывапывапывап, апывапыва. ывапываповыап. Привет'
-    doc = Doc(text)
+def text_processing(text, news_date):
+    with open(f'news_{news_date}.txt', 'w', encoding="utf-8") as f:
+        f.write(text)
+    f = open(f'news_{news_date}.txt', "r", encoding="utf-8")
+    txt = f.read()
+
+    doc = Doc(txt)
     doc.segment(segmenter)
     doc.tag_morph(morph_tagger)
     doc.parse_syntax(syntax_parser)
     doc.tag_ner(ner_tagger)
-    print(doc.spans)
-    # for span in doc.spans:
-    #     span.normalize(morph_vocab)
-    #
-    # print({_.text: _.normal for _ in doc.spans})
+
+    for span in doc.spans:
+        span.normalize(morph_vocab)
+
+    for span in doc.spans:
+        if span.type == PER:
+            span.extract_fact(names_extractor)
+
+    for token in doc.tokens:
+        token.lemmatize(morph_vocab)
+
+    count_names = Counter([_.normal for _ in doc.spans if _.fact])
+
+    if count_names != Counter():
+        wordcloud = WordCloud().generate_from_frequencies(count_names)
+        plt.imshow(wordcloud, interpolation='bilinear')
+        plt.axis("off")
+        plt.show()
+
+    count_words = Counter([_.lemma.capitalize() for _ in doc.tokens if _.pos == 'NOUN'])
+
+    if count_words != Counter():
+        wordcloud = WordCloud().generate_from_frequencies(count_words)
+        plt.imshow(wordcloud, interpolation='bilinear')
+        plt.axis("off")
+        plt.show()
 
 
-def remove_chars_from_text(text, chars):
-    return "".join([ch for ch in text if ch not in chars])
-
-
-dom = 'https://www.herzen.spb.ru'
-main_html('https://www.herzen.spb.ru/main/news/')
-
+if __name__ == '__main__':
+    dom = 'https://www.herzen.spb.ru'
+    main_html('https://www.herzen.spb.ru/main/news/')
