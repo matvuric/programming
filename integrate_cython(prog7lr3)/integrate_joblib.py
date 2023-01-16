@@ -1,4 +1,5 @@
 from joblib import Parallel, delayed
+from math import sin
 
 
 def integrate(f, a, b, *, n_iter=10**6):
@@ -14,7 +15,7 @@ def integrate(f, a, b, *, n_iter=10**6):
     return round(res, 8)
 
 
-def integrate_async(f, a, b, *, n_jobs=2, n_iter=1000, backend=None):
+def integrate_async_joblib(a, b, *, f=sin, n_jobs=2, n_iter=1000, backend=None):
     h = (b - a) / n_jobs
     with Parallel(n_jobs=n_jobs, backend=backend) as p:
         fs = (delayed(integrate)(f, a + i * (h + 1), a + (i + 1) * h, n_iter=n_iter // n_jobs) for i in range(n_jobs))
