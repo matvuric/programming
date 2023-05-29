@@ -156,7 +156,8 @@ Counter({'Ксения Старыгина': 1})
 ```
 ### [Лабораторная работа №7. Контейниризация приложения.](https://replit.com/@MatviivKirill/prog7lr7)
 ### [Лабораторная работа №8. Контейниризация приложения с БД.](https://replit.com/@MatviivKirill/prog7lr8)
-### [Дополнительная работа №1. Линейная регрессия с MinMax нормализацией.]()
+## Дополнительные задания
+### [Дополнительная работа №1. Линейная регрессия с MinMax нормализацией.](https://github.com/matvuric/programming/tree/master/linear_minmax)
 ![](https://sun9-14.userapi.com/impg/jLTHIhg0AI6uv86VKjtHZGLPJHPsnd8TCbzSEw/250C3YVN5T8.jpg?size=640x480&quality=96&sign=16a92bc75c2ac124cb137941b9134598&type=album)
 ![](https://sun9-10.userapi.com/impg/YBaeXI6-8ANa0tzLMunid-YrW1fwCWDml2GUtQ/ZNoIYjftu3Y.jpg?size=640x480&quality=96&sign=e38c23fc731796ee617140a1153a80af&type=album)
 ![](https://sun9-72.userapi.com/impg/I9OwZGYBwLLl_wM2CseBNrsn0KHvIVG_wj90hg/jhZ8vT5q4K4.jpg?size=640x480&quality=96&sign=f0dce5a4559ab47112bcea3a1d3d1fcf&type=album)
